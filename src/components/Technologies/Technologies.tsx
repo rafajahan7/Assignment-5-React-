@@ -1,4 +1,5 @@
 import React, { use, useState } from "react";
+import { toast } from "react-toastify";
 import type { ITech } from "../../types/Types";
 import TechnologyCard from "./TechnologyCard";
 import YourStack from "./YourStack";
@@ -9,51 +10,82 @@ interface TechnologiesProps {
 
 const Technologies = ({ techPromise }: TechnologiesProps) => {
 
-
   const technologies = use(techPromise);
+
+  // Selected technologies
   const [selectedTechs, setSelectedTechs] = useState<ITech[]>([]);
 
-  const handleAddToStack = (tech: ITech) => {
 
+  // Add technology
+  const handleAddToStack = (tech: ITech) => {
 
     const alreadyAdded = selectedTechs.some(
       (item) => item.id === tech.id
     );
 
-    
+    // Duplicate technology
     if (alreadyAdded) {
-      alert(`${tech.name} is already in your stack!`);
+
+      toast.warning(
+        `${tech.name} is already in your stack!`
+      );
+
       return;
     }
 
-  
+    // Add technology
     setSelectedTechs([...selectedTechs, tech]);
+
+    toast.success(
+      `${tech.name} added to your stack!`
+    );
   };
 
 
+  // Remove one technology
   const handleRemove = (id: string) => {
+
+    const tech = selectedTechs.find(
+      (item) => item.id === id
+    );
 
     const remainingTechs = selectedTechs.filter(
       (tech) => tech.id !== id
     );
 
     setSelectedTechs(remainingTechs);
+
+    if (tech) {
+      toast.info(
+        `${tech.name} removed from your stack!`
+      );
+    }
   };
 
 
-
+  // Remove all technologies
   const handleRemoveAll = () => {
+
+    if (selectedTechs.length === 0) {
+      return;
+    }
+
     setSelectedTechs([]);
+
+    toast.info(
+      "All technologies removed from your stack!"
+    );
   };
 
 
   return (
-    <section className="py-10">
+    <section className="pt-4 pb-10">
 
-    
+      {/* Heading */}
       <div className="max-w-6xl mx-auto px-4 mb-5">
 
         <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+
           Explore the{" "}
 
           <span className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
@@ -69,10 +101,10 @@ const Technologies = ({ techPromise }: TechnologiesProps) => {
       </div>
 
 
-    
+      {/* Cards + Your Stack */}
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-4 gap-4">
 
-  
+        {/* Technology Cards */}
         <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
 
           {technologies.map((tech) => (
@@ -81,12 +113,10 @@ const Technologies = ({ techPromise }: TechnologiesProps) => {
               key={tech.id}
               tech={tech}
 
-          
               isAdded={selectedTechs.some(
                 (item) => item.id === tech.id
               )}
 
-      
               onAdd={handleAddToStack}
             />
 
@@ -95,7 +125,7 @@ const Technologies = ({ techPromise }: TechnologiesProps) => {
         </div>
 
 
-        
+        {/* Your Stack */}
         <YourStack
           selectedTechs={selectedTechs}
           onRemove={handleRemove}
