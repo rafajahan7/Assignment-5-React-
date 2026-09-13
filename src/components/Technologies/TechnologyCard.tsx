@@ -7,32 +7,23 @@ interface TechnologyCardProps {
   onAdd: (tech: ITech) => void;
 }
 
-const TechnologyCard = ({ tech, isAdded, onAdd,}: TechnologyCardProps) => {
-
-
-
-  let difficultyText = "";
-
-  if (tech.difficulty === 1) {
-    difficultyText = "Beginner-Friendly";
-  }
-   else if (tech.difficulty === 2) {
-    difficultyText = "Intermediate";
-  } 
-  else {
-    difficultyText = "Advanced";
-  }
-
-
+const TechnologyCard = ({
+  tech,
+  isAdded,
+  onAdd,
+}: TechnologyCardProps) => {
   return (
-    <div className="card bg-base-100 border border-gray-200 rounded-xl shadow-none">
+    <div className="card bg-white border border-gray-200 rounded-xl shadow-none">
 
       <div className="card-body p-3">
 
-
         <div className="flex items-start justify-between h-7">
 
-          <img  src={tech.icon} alt={tech.name} className="w-7 h-7 object-contain"/>
+          <img
+            src={tech.icon}
+            alt={tech.name}
+            className="w-7 h-7 object-contain"
+          />
 
           <span className="badge badge-outline text-[8px] h-5 px-2">
             {tech.badge}
@@ -40,12 +31,10 @@ const TechnologyCard = ({ tech, isAdded, onAdd,}: TechnologyCardProps) => {
 
         </div>
 
-
-  
         <h2 className="text-sm font-bold text-slate-900 mt-1">
           {tech.name}
         </h2>
-   
+
         <p className="text-[9px] leading-3.5 text-gray-400 min-h-[38px]">
           {tech.description}
         </p>
@@ -57,7 +46,7 @@ const TechnologyCard = ({ tech, isAdded, onAdd,}: TechnologyCardProps) => {
           </span>
 
           <span className="badge badge-ghost text-[7px] h-5 px-2">
-            {difficultyText}
+            {tech.difficulty}
           </span>
 
           <span className="ml-auto text-[8px] text-gray-500">
@@ -69,14 +58,13 @@ const TechnologyCard = ({ tech, isAdded, onAdd,}: TechnologyCardProps) => {
 
         </div>
 
-
         <div className="card-actions mt-1">
 
           <button
             onClick={() => onAdd(tech)}
             disabled={isAdded}
-            className={`btn btn-xs w-full h-7 min-h-7 text-[9px] font-medium border-none
-
+            className={`
+              btn btn-xs w-full h-7 min-h-7 text-[9px] font-medium border-none
               ${
                 isAdded
                   ? "bg-green-100 text-green-600"
@@ -84,12 +72,9 @@ const TechnologyCard = ({ tech, isAdded, onAdd,}: TechnologyCardProps) => {
               }
             `}
           >
-
             {isAdded
               ? "✓ Added to Stack"
-              : "Add to Stack"
-            }
-
+              : "Add to Stack"}
           </button>
 
         </div>

@@ -93,7 +93,7 @@ const YourStack = ({
         )}
 
 
-        {/* Remove All */}
+     
         <button
           onClick={onRemoveAll}
           disabled={selectedTechs.length === 0}

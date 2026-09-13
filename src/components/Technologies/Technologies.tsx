@@ -12,18 +12,18 @@ const Technologies = ({ techPromise }: TechnologiesProps) => {
 
   const technologies = use(techPromise);
 
-  // Selected technologies
+  
   const [selectedTechs, setSelectedTechs] = useState<ITech[]>([]);
 
 
-  // Add technology
+ 
   const handleAddToStack = (tech: ITech) => {
 
     const alreadyAdded = selectedTechs.some(
       (item) => item.id === tech.id
     );
 
-    // Duplicate technology
+   
     if (alreadyAdded) {
 
       toast.warning(
@@ -33,7 +33,7 @@ const Technologies = ({ techPromise }: TechnologiesProps) => {
       return;
     }
 
-    // Add technology
+  
     setSelectedTechs([...selectedTechs, tech]);
 
     toast.success(
@@ -42,7 +42,7 @@ const Technologies = ({ techPromise }: TechnologiesProps) => {
   };
 
 
-  // Remove one technology
+ 
   const handleRemove = (id: string) => {
 
     const tech = selectedTechs.find(
@@ -63,9 +63,8 @@ const Technologies = ({ techPromise }: TechnologiesProps) => {
   };
 
 
-  // Remove all technologies
-  const handleRemoveAll = () => {
 
+  const handleRemoveAll = () => {
     if (selectedTechs.length === 0) {
       return;
     }
@@ -81,7 +80,7 @@ const Technologies = ({ techPromise }: TechnologiesProps) => {
   return (
     <section className="pt-4 pb-10">
 
-      {/* Heading */}
+     
       <div className="max-w-6xl mx-auto px-4 mb-5">
 
         <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
@@ -101,10 +100,9 @@ const Technologies = ({ techPromise }: TechnologiesProps) => {
       </div>
 
 
-      {/* Cards + Your Stack */}
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-4 gap-4">
 
-        {/* Technology Cards */}
+
         <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
 
           {technologies.map((tech) => (
@@ -124,8 +122,6 @@ const Technologies = ({ techPromise }: TechnologiesProps) => {
 
         </div>
 
-
-        {/* Your Stack */}
         <YourStack
           selectedTechs={selectedTechs}
           onRemove={handleRemove}

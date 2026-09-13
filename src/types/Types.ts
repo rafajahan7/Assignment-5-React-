@@ -5,6 +5,6 @@ export interface ITech{
     description: string,
     icon: string,
     rating: number,
-    difficulty: number,
+    difficulty: string,
     badge:string,
 }
