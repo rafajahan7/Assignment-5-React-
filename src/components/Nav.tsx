@@ -4,7 +4,7 @@ import Ham from "../assets/hamburger.png"
 
 const Nav = () => {
     return (
-        <nav className="w-full border-b border-gray-100 ">
+        <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
             <div className="container mx-auto flex justify-between items-center px-20 py-5">
                  
                 <img src={Ham} alt="for mobile" className='md:hidden'></img>
