@@ -1,4 +1,4 @@
-import React from "react";
+
 import type { ITech } from "../../types/Types";
 
 interface YourStackProps {

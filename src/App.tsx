@@ -1,4 +1,4 @@
-import { Suspense, useState } from 'react'
+import { Suspense} from 'react'
 
 import './App.css'
 import Nav from './components/Nav'

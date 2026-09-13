@@ -1,4 +1,4 @@
-import React from "react";
+
 import Logo from "../assets/logo-text.png";
 
 const Footer = () => {
@@ -45,7 +45,7 @@ const Footer = () => {
           </div>
 
 
-          {/* Company */}
+          
           <div>
 
             <h3 className="text-[8px] font-bold text-slate-800 uppercase">
@@ -86,7 +86,7 @@ const Footer = () => {
           </div>
 
 
-          {/* Legal */}
+          
           <div>
 
             <h3 className="text-[8px] font-bold text-slate-800 uppercase">
@@ -120,7 +120,7 @@ const Footer = () => {
         </div>
 
 
-        {/* Bottom Bar */}
+       
         <div className="border-t border-gray-100 mt-8 pt-4 flex justify-between items-center">
 
           <p className="text-[7px] text-gray-300">

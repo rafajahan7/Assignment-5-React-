@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import { use, useState } from "react";
 import { toast } from "react-toastify";
 import type { ITech } from "../../types/Types";
 import TechnologyCard from "./TechnologyCard";
